@@ -1,4 +1,6 @@
-import { Html, Head, Main, NextScript } from 'next/document';
+import {
+  Html, Head, Main, NextScript,
+} from 'next/document';
 
 export default function Document() {
   return (
@@ -7,7 +9,6 @@ export default function Document() {
       <body>
         <Main />
         <NextScript />
-        <div id="root-portal"></div>
       </body>
     </Html>
   );

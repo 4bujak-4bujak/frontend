@@ -2,10 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 @font-face {
   font-family: 'Pretendard';
-  src:
-    url('/fonts/PretendardVariable.woff2') format('woff2'),
+  src: url('/fonts/PretendardVariable.woff2') format('woff2'),
     url('/fonts/PretendardVariable.ttf') format('ttf');
   font-weight: normal;
   font-style: normal;
@@ -18,23 +19,33 @@
   box-sizing: border-box;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
+
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
 }
 
 body {
-  font-family:
-    'Pretendard',
-    -apple-system,
-    BlinkMacSystemFont,
-    Roboto,
-    Oxygen,
-    Ubuntu,
-    Cantarell,
-    Fira Sans,
-    Droid Sans,
-    Helvetica Neue,
-    sans-serif;
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+
+}
+
+body {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 @layer utilities {
