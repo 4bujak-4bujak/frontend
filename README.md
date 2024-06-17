@@ -7,12 +7,8 @@
 
 - testID : gogo55@4busak.com
 - testPW : Office123!
-
-## Contributor
-
-- @로그인/회원가입 ([방호진](https://github.com/banghogu))
-- @지도, 오피스 미팅룸 예약 ([정지오](https://github.com/jiohjung98))
-- @PWA ([조기범](https://github.com/eun-hak))
+  
+<br/>
 
 ## Tech Stack
 
@@ -36,6 +32,7 @@
 | `asset: `            | 이미지 등 assets 파일 추가 |
 | `chore: `           | 그 외 기타 수정                      |
 
+<br/>
 
 ## Script
 
