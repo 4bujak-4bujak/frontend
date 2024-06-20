@@ -22,7 +22,7 @@ const PopUpModal = ({ setGuideModalOpen }: PopUpModalType) => {
     <div className="fixed inset-0 bg-gray-900 bg-opacity-30 z-[99999]">
       <div className="z-50 w-[393px] bg-white absolute left-1/2 bottom-0 transform -translate-x-1/2 rounded-t-2xl">
         <div
-          onClick={() => handleExpireTime()}
+          onClick={() => setGuideModalOpen(false)}
           className="flex items-center justify-end mt-2 mr-2 cursor-pointer">
           <IoClose size={30} color="#828282" />
         </div>
@@ -104,34 +104,22 @@ const PopUpModal = ({ setGuideModalOpen }: PopUpModalType) => {
           </div>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, translateX: -90 }}
-          transition={{
-            duration: 0.4,
-            ease: 'easeInOut',
-            delay: 0.9
-          }}
-          animate={{
-            opacity: 1,
-            translateX: 0
-          }}>
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <div
-              onClick={() => handleExpireTime()}
-              className="cursor-pointer flex-1 ml-5 flex items-center h-[45px] justify-center rounded-lg bg-gray-400 text-lg text-white font-semibold ">
-              다시 보지 않기
-            </div>
-            <div
-              onClick={() =>
-                router.push(
-                  'https://support.google.com/chrome/answer/9658361?hl=ko&co=GENIE.Platform%3DiOS&oco=2'
-                )
-              }
-              className="cursor-pointer flex-1 mr-5 flex items-center  h-[45px] justify-center rounded-lg bg-space-purple text-lg text-white font-semibold ">
-              자세히 보기
-            </div>
+        <div className="flex items-center justify-center gap-3 mb-8">
+          <div
+            onClick={() => handleExpireTime()}
+            className="cursor-pointer flex-1 ml-5 flex items-center h-[45px] justify-center rounded-lg bg-gray-400 text-lg text-white font-semibold ">
+            다시 보지 않기
           </div>
-        </motion.div>
+          <div
+            onClick={() =>
+              router.push(
+                'https://support.google.com/chrome/answer/9658361?hl=ko&co=GENIE.Platform%3DiOS&oco=2'
+              )
+            }
+            className="cursor-pointer flex-1 mr-5 flex items-center  h-[45px] justify-center rounded-lg bg-space-purple text-lg text-white font-semibold ">
+            자세히 보기
+          </div>
+        </div>
       </div>
     </div>
   );
