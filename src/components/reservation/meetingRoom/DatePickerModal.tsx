@@ -1,9 +1,10 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import DatePickerWheel from './WheelPicker';
 import { ko } from 'date-fns/locale';
+import useOnClickOutside from '@/components/community/hooks/useOnClickOutside';
 
 interface DatePickerModalProps {
   showModal: boolean;
@@ -31,6 +32,8 @@ const DatePickerModal: React.FC<DatePickerModalProps> = ({
   initialEndTime,
   activeTab
 }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  useOnClickOutside(ref, () => setShowModal(false));
   const [startDate, setStartDate] = useState<Date>(initialStartTime);
   const [startTime, setStartTime] = useState<string>(
     initialStartTime.toTimeString().substr(0, 5)
@@ -156,7 +159,9 @@ const DatePickerModal: React.FC<DatePickerModalProps> = ({
   return (
     <div className="fixed inset-0 flex items-end justify-center z-[99999]">
       <div className="bg-black bg-opacity-50 absolute inset-0"></div>
-      <div className="bg-white rounded-t-2xl w-[100%] max-w-[430px] h-[640px] p-6 absolute bottom-0 overflow-y-auto">
+      <div
+        ref={ref}
+        className="bg-white rounded-t-2xl w-[100%] max-w-[430px] h-[640px] p-6 absolute bottom-0 overflow-y-auto">
         <div className="flex">
           <button
             className={`py-2 px-4 ${
