@@ -8,6 +8,7 @@ import React, { useEffect } from 'react';
 import { useQuery } from 'react-query';
 import { fcmpost } from '@/api/fcm/fcm.post.api';
 import { getTokenHandler } from '@/components/pwa/Fcm';
+import PopUpModal from '@/components/home/PopUpModal';
 const Index = () => {
   //
   /* eslint-disable */
@@ -37,6 +38,7 @@ const Index = () => {
     <MainContainer>
       <MainPageIndex />
       <Footer />
+      <PopUpModal />
     </MainContainer>
   );
 };
