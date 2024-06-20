@@ -399,7 +399,7 @@ const MeetingRoomIndex: React.FC = () => {
 
   return (
     <div className="p-4 h-screen">
-      <div className="relative">
+      <div className="relative cursor-pointer">
         <Image
           src={'/resetwithbg.svg'}
           width={45}
