@@ -22,7 +22,7 @@ const ReservationIndex: React.FC<ReservationIndexProps> = ({ initialTab }) => {
       setCurrentRoom(tabMapping[initialTab] || 'meeting');
     }
   }, [initialTab]);
-  
+
   return (
     <div className="mt-[80px] mb-[100px] ">
       {/* 현재 지정된 오피스 */}

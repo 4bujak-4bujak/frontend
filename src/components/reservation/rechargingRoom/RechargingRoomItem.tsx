@@ -2,6 +2,7 @@ import React, { Dispatch } from 'react';
 import { rechargingRoomDataType } from '../model/recharging';
 import { SelectedState } from './RechargingRoomIndex';
 import { checkValidRecharging } from '../remote/recharging';
+import Image from 'next/image';
 
 interface RechargingRoomItemType {
   roomData: rechargingRoomDataType;
@@ -53,7 +54,13 @@ const RechargingRoomItem = ({
     <div className="mt-5">
       {/* 캐러셀 */}
       <div className="mx-4 w-[361px] shadow rounded border border-gray-100">
-        <img src="/reservation/rechargingMock.jpeg" alt="" className="w-full" />
+        <Image
+          width={359}
+          height={239}
+          src="/reservation/rechargingMock.jpeg"
+          alt=""
+          className="w-full"
+        />
         <div className="mx-4 mt-4 text-space-black text-lg font-bold">
           {roomData?.rechargingRoomName}
         </div>

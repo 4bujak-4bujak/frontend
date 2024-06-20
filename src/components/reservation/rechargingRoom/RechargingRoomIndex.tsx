@@ -4,17 +4,21 @@ import { getRechargingRoom } from '../remote/recharging';
 import { useBranchStore } from '@/store/branch.store';
 import { useBranchStore2 } from '@/store/reserve.store';
 import RechargingHead from './RechargingHead';
-import RechargingRoomItem from './RechargingRoomItem';
 import { rechargingRoomDataType } from '../model/recharging';
 import RechargingBtn from './RechargingBtn';
 import RechargingConfirmModal from './modal/RechargingConfirmModal';
 import RechargingErrorModal from './modal/RechargingErrorModal';
+import dynamic from 'next/dynamic';
 
 export interface SelectedState {
   rechargingRoomId: number;
   startAt: string;
   rechargingRoomName?: string;
 }
+
+const RechargingRoomItem = dynamic(() => import('./RechargingRoomItem'), {
+  loading: () => <div className="w-[361px] h-[341px] " />
+});
 
 const RechargingRoomIndex = () => {
   const selectedBranch = useBranchStore((state) => state.selectedBranch);
