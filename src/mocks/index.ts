@@ -1,5 +1,5 @@
 const initMocks = async () => {
-  const isServer = typeof window === 'undefined';
+  const isServer = typeof window === 'undefined'; //node 환경인가?
 
   if (isServer) {
     const { server } = await import('./server');
