@@ -6,9 +6,6 @@ import WriteCommentLayout from './comments/WriteCommentLayout';
 import { useModalStore } from '@/store/modal.store';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
-import { useQuery } from 'react-query';
-import { getPostDetail } from './remote/post';
-import ConfirmModal from './shared/modal/ConfirmModal';
 
 const DeleteModal = dynamic(() => import('./shared/modal/DeleteModal'), { ssr: false });
 
@@ -17,19 +14,11 @@ const PostDetailIndex = () => {
   const router = useRouter();
   const { id } = router.query as { id: string };
 
-  const { data: postData } = useQuery(['post', id], () => getPostDetail(id), {
-    enabled: id != null
-  });
-
-  if (postData?.status == 'FAIL') {
-    return <ConfirmModal />;
-  }
-
   return (
     <div className="mx-4">
       <div className="h-[60px]" />
       <ToBackComunity />
-      <PostDetail postData={postData && postData} />
+      <PostDetail />
       {/* 구분선 */}
       <div className="w-full h-1 bg-gray-100" />
       {/* 댓글자리 */}

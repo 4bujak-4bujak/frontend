@@ -1,18 +1,18 @@
 import React from 'react';
 import { formatDate, formatTime } from '@/utils/invertFullTime';
 import { useModalStore } from '@/store/modal.store';
-import { PostDetailDataType } from '../model/postDetailType';
 import { useMutation, useQueryClient } from 'react-query';
 import { cancelLike, registerLike } from '../remote/post';
-import { useEnumToTag } from '../hooks/useEnumToTag';
-import { useEnumToCategory } from '../hooks/useEnumToCategory';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
+import { usePostDetail } from '../factory/postDetailFactory';
 
-interface PostDetailType {
-  postData: PostDetailDataType;
-}
+const PostDetail = () => {
+  const router = useRouter();
+  const { id } = router.query as { id: string };
 
-const PostDetail = ({ postData }: PostDetailType) => {
+  const { postData, tag, category, heartImg } = usePostDetail(id);
+
   const queryClient = useQueryClient();
   const { setOpen, setDeleteId, setCategory } = useModalStore();
 
@@ -35,9 +35,6 @@ const PostDetail = ({ postData }: PostDetailType) => {
       }
     }
   );
-
-  const tag = useEnumToTag(postData?.tag);
-  const category = useEnumToCategory(postData?.category);
 
   if (postData == null) {
     return null;
@@ -98,7 +95,7 @@ const PostDetail = ({ postData }: PostDetailType) => {
       {/* 사진자리 */}
       {(postData.images?.length as number) > 0 ? (
         <div className="flex flex-col gap-2 mt-5">
-          {postData.images?.map((image, i) => (
+          {postData.images?.map((image: string, i: number) => (
             <div className="w-[360px] h-[280px]" key={i}>
               <Image
                 width={360}
@@ -138,11 +135,7 @@ const PostDetail = ({ postData }: PostDetailType) => {
             }
           }}
           className="flex items-center justify-center gap-1 cursor-pointer">
-          {postData.isLiked ? (
-            <img src="/community/colorHeart.svg" alt="" />
-          ) : (
-            <img src="/community/heart.svg" alt="" />
-          )}
+          <img src={heartImg} alt="" />
 
           <div className="flex items-center justify-center gap-1">
             <div>좋아요</div>
