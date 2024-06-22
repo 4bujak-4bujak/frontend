@@ -6,6 +6,7 @@ import { cancelLike, registerLike } from '../remote/post';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { usePostDetail } from '../factory/postDetailFactory';
+import ErrorBoundary from '@/components/shared/ErrorBoundary';
 
 const PostDetail = () => {
   const router = useRouter();
@@ -53,7 +54,7 @@ const PostDetail = () => {
         {/* 유저 사진 */}
         <div className="w-[42px] h-[42px]">
           <Image
-            src={`${postData.writer.profile}`}
+            src={`${postData?.writer?.profile}`}
             alt="image"
             priority={true}
             className="rounded-[50%] w-full h-full"
@@ -67,12 +68,12 @@ const PostDetail = () => {
         <div className="flex flex-col flex-1">
           {/* 유저 이름 */}
           <div className="flex justify-between">
-            <div className="text-sm font-semibold">{postData.writer.nickname}</div>
-            {postData.isWriter && (
+            <div className="text-sm font-semibold">{postData?.writer?.nickname}</div>
+            {postData?.isWriter && (
               <div
                 onClick={() => {
                   setOpen(true);
-                  setDeleteId(String(postData.postId));
+                  setDeleteId(String(postData?.postId));
                   setCategory('post');
                 }}
                 className="text-gray-500 text-sm font-normal underline cursor-pointer">
@@ -87,13 +88,13 @@ const PostDetail = () => {
       </div>
 
       {/* 제목자리 */}
-      <div className="mt-6 text-lg font-bold">{postData.title}</div>
+      <div className="mt-6 text-lg font-bold">{postData?.title}</div>
 
       {/* 컨텐츠 내용자리 */}
-      <div className="mt-3">{postData.content}</div>
+      <div className="mt-3">{postData?.content}</div>
 
       {/* 사진자리 */}
-      {(postData.images?.length as number) > 0 ? (
+      {(postData?.images?.length as number) > 0 ? (
         <div className="flex flex-col gap-2 mt-5">
           {postData.images?.map((image: string, i: number) => (
             <div className="w-[360px] h-[280px]" key={i}>
@@ -117,10 +118,10 @@ const PostDetail = () => {
       <div className="flex items-center mt-3 text-gray-500 text-xs font-normal">
         {/* 일자 */}
         <div className="border-r border-neutral-300 pr-2">
-          {formatDate(postData.createdDate)}
+          {formatDate(postData?.createdDate)}
         </div>
         {/* 시간 */}
-        <div className="pl-2">{formatTime(postData.createdDate)}</div>
+        <div className="pl-2">{formatTime(postData?.createdDate)}</div>
       </div>
 
       {/* 좋아요 조회수 자리 */}
@@ -128,10 +129,10 @@ const PostDetail = () => {
         {/* 좋아요 */}
         <div
           onClick={() => {
-            if (postData.isLiked) {
-              cancelLikeMutate(postData.postId);
+            if (postData?.isLiked) {
+              cancelLikeMutate(postData?.postId);
             } else {
-              registerLikeMutate(postData.postId);
+              registerLikeMutate(postData?.postId);
             }
           }}
           className="flex items-center justify-center gap-1 cursor-pointer">
@@ -139,7 +140,7 @@ const PostDetail = () => {
 
           <div className="flex items-center justify-center gap-1">
             <div>좋아요</div>
-            <div>{postData.likeCount}</div>
+            <div>{postData?.likeCount}</div>
           </div>
         </div>
 
@@ -151,7 +152,7 @@ const PostDetail = () => {
           <img src="/community/viewCount.svg" alt="" />
           <div className="flex items-center justify-center gap-1">
             <div>조회수</div>
-            <div>{postData.viewCount}</div>
+            <div>{postData?.viewCount}</div>
           </div>
         </div>
       </div>
@@ -159,4 +160,25 @@ const PostDetail = () => {
   );
 };
 
-export default PostDetail;
+export default WrapErrorBoundary;
+
+function WrapErrorBoundary() {
+  return (
+    <ErrorBoundary
+      fallbackComponent={
+        <div className="mt-[100px] mb-[170px]">
+          <div className="flex flex-col items-center justify-center">
+            <Image src="/error.png" width={100} height={100} alt="error" />
+            <div className="text-space-purple font-bold text-lg">
+              글을 가져오는 중 일시적인 오류가 발생했습니다.
+            </div>
+            <div className="text-gray-500 text-md font-semibold">
+              잠시 후 다시 시도해주세요
+            </div>
+          </div>
+        </div>
+      }>
+      <PostDetail />
+    </ErrorBoundary>
+  );
+}

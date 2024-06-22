@@ -1,3 +1,4 @@
+import ErrorBoundary from '@/components/shared/ErrorBoundary';
 import Layout from '@/components/shared/Layout';
 import LoadingSpinner from '@/components/shared/LoadingSpinner';
 import { AuthorizationProvider } from '@/providers/Authentication';
@@ -42,8 +43,10 @@ export default function App({ Component, pageProps }: AppProps) {
             <AuthorizationProvider>
               <QueryClientProvider client={queryClient}>
                 <Hydrate state={pageProps.dehydratedState}>
-                  {loading && <LoadingSpinner />}
-                  <Component {...pageProps} />
+                  <ErrorBoundary>
+                    {loading && <LoadingSpinner />}
+                    <Component {...pageProps} />
+                  </ErrorBoundary>
                 </Hydrate>
                 <ReactQueryDevtools initialIsOpen={false} />
               </QueryClientProvider>
