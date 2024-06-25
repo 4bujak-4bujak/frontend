@@ -8,7 +8,8 @@ const nextConfig = {
       'userimage.bucket.s3.ap-northeast-2.amazonaws.com',
       'sabujak-image-bucket.s3.ap-northeast-2.amazonaws.com',
       '*'
-    ]
+    ],
+    formats: ['image/avif', 'image/webp']
   },
   reactStrictMode: true,
   webpack: (config, { isServer }) => {
