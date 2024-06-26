@@ -1,8 +1,8 @@
 import deleteFirstWord from '@/utils/deleteFirtstWord';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useRouter } from 'next/router';
-
+import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 const Footer = () => {
   const router = useRouter();
   const pathName = usePathname();
@@ -21,9 +21,9 @@ const Footer = () => {
           <div className="  h-[44.84px] flex-col justify-start items-center gap-2.5 inline-flex">
             <div className="w-[22.06px] h-[21.82px] flex-col justify-center items-center">
               {filteredPathName === '' ? (
-                <img className="w-5 h-5 " src="/CheckedHome.svg" alt="home" />
+                <Image src="/CheckedHome.svg" alt="home" width={20} height={20} />
               ) : (
-                <img className="w-5 h-5 " src="/Home.svg" alt="home" />
+                <Image src="/Home.svg" alt="home" width={20} height={20} />
               )}
             </div>
             <div className="text-center text-black text-xs font-normal font-['Pretendard']">
