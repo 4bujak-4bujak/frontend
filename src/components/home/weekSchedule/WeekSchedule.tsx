@@ -4,7 +4,7 @@ import { format, startOfWeek, addDays, isSaturday, isSunday, isSameDay } from 'd
 import { ko } from 'date-fns/locale';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
-
+import Image from 'next/image';
 const WeekScheduleItem = dynamic(() => import('./WeekScheduleItem'), {
   loading: () => <div className="w-[361px] h-[121px] " />
 });
@@ -32,7 +32,7 @@ const WeekSchedule = () => {
             className="text-gray-500 text-sm font-normal ">
             전체보기
           </div>
-          <img src="/home/toNext_gray.svg" alt="" />
+          <Image src="/home/toNext_gray.svg" alt="toNext" width={7} height={13} />
         </div>
       </div>
       {/* 주차별 캘린더 */}

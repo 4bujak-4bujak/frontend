@@ -7,7 +7,7 @@ import { getAllAvailableCount } from './remote/mainReservation';
 import { useRouter } from 'next/router';
 import { getSelectedOfficeInfo } from '@/api/map/getSelectedOffice';
 import { useBranchStore2 } from '@/store/reserve.store';
-
+import Image from 'next/image';
 const AvailableRoom = () => {
   const router = useRouter();
   const queryClient = useQueryClient();
@@ -41,7 +41,7 @@ const AvailableRoom = () => {
       if (data.data) {
         setReservedBranch(data?.data, Date.now());
         router.push({
-          pathname: '/reservation',
+          pathname: '/reservation'
         });
       }
     } catch (error) {
@@ -69,7 +69,7 @@ const AvailableRoom = () => {
               ]);
               setCurrentTime(format(new Date(), 'HH:mm'));
             }}>
-            <img src="/home/refresh.svg" alt="" />
+            <Image src="/home/refresh.svg" alt="refresh" width={17} height={17} />
           </div>
         </div>
       </div>
@@ -78,7 +78,7 @@ const AvailableRoom = () => {
       <div className="flex gap-[76px] items-center justify-center mt-6">
         <div className="flex flex-col gap-[13px] items-center justify-center">
           <div>
-            <img src="/home/M_Room.svg" alt="" />
+            <Image src="/home/M_Room.svg" alt="M_Room" width={32} height={37} />
           </div>
           <div className="text-gray-600 text-sm font-normal ">미팅룸</div>
           <div className="flex justify-center items-center gap-1">
@@ -88,7 +88,7 @@ const AvailableRoom = () => {
               </span>
             </div>
             <div>
-              <img src="/home/slash.svg" alt="" />
+              <Image src="/home/slash.svg" alt="slash" width={9} height={19} />
             </div>
             <div className="text-gray-400 font-medium text-base">
               {data?.totalMeetingRoomCount}
@@ -98,7 +98,7 @@ const AvailableRoom = () => {
 
         <div className="flex flex-col gap-[13px] items-center justify-center">
           <div>
-            <img src="/home/R_Room.svg" alt="" />
+            <Image src="/home/R_Room.svg" alt="R_Room" width={37} height={40} />
           </div>
           <div className="text-gray-600 text-sm font-normal ">리차징룸</div>
           <div className="flex justify-center items-center gap-1">
@@ -108,7 +108,7 @@ const AvailableRoom = () => {
               </span>
             </div>
             <div>
-              <img src="/home/slash.svg" alt="" />
+              <Image src="/home/slash.svg" alt="slash" width={9} height={19} />
             </div>
             <div className="text-gray-400 font-medium text-base">
               {data?.totalRechargingRoomCount}
@@ -118,7 +118,7 @@ const AvailableRoom = () => {
 
         <div className="flex flex-col gap-[13px] items-center justify-center">
           <div>
-            <img src="/home/G_Room.svg" alt="" />
+            <Image src="/home/G_Room.svg" alt="G_Room" width={33} height={37} />
           </div>
           <div className="text-gray-600 text-sm font-normal ">포커스존</div>
           <div className="flex justify-center items-center gap-1">
@@ -128,7 +128,7 @@ const AvailableRoom = () => {
               </span>
             </div>
             <div>
-              <img src="/home/slash.svg" alt="" />
+              <Image src="/home/slash.svg" alt="slash" width={9} height={19} />
             </div>
             <div className="text-gray-400 font-medium text-base">
               {data?.totalFocusDeskCount}
@@ -139,7 +139,8 @@ const AvailableRoom = () => {
 
       {/* 하단 */}
       <div
-        className="cursor-pointer mt-8 rounded-lg w-full h-12 border-2 border-space-purple flex justify-center items-center text-space-purple text-[15px] font-semibold" onClick={handleGoToReservation}>
+        className="cursor-pointer mt-8 rounded-lg w-full h-12 border-2 border-space-purple flex justify-center items-center text-space-purple text-[15px] font-semibold"
+        onClick={handleGoToReservation}>
         예약하기
       </div>
     </div>

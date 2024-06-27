@@ -3,7 +3,7 @@ import { useNotices } from '@/hook/useNotices';
 import { getSelectedOfficeInfo } from '@/api/map/getSelectedOffice';
 import { useBranchStore } from '@/store/branch.store';
 import { useRouter } from 'next/router';
-
+import Image from 'next/image';
 const OfficeNotice: React.FC = () => {
   const { urgentNoticeTitle, urgentNoticeContent } = useNotices();
   const selectedBranch = useBranchStore((state) => state.selectedBranch);
@@ -44,7 +44,13 @@ const OfficeNotice: React.FC = () => {
         className=" cursor-pointer w-full h-12 mt-7 flex items-center gap-[13px] px-[13px] py-[14px] rounded shadow border border-gray-200"
         style={{ backgroundColor: 'rgb(228, 224, 245)' }}>
         <div>
-          <img src="/home/notice.svg" alt="" />
+          <Image
+            src="/home/notice.svg"
+            alt="map"
+            width={24}
+            height={21}
+            className="w-full"
+          />
         </div>
 
         <div className="flex-1 flex items-center gap-[22px] justify-between">
@@ -53,7 +59,13 @@ const OfficeNotice: React.FC = () => {
           </div>
           {urgentNoticeContent && (
             <div className="">
-              <img src="/home/toNext.svg" alt="" />
+              <Image
+                src="/home/toNext.svg"
+                alt="map"
+                width={7}
+                height={14}
+                className="w-full"
+              />
             </div>
           )}
         </div>

@@ -5,7 +5,7 @@ import SelectOfficeMap from './SelectOfficeMap';
 import { Branch } from '@/api/types/branch';
 import { useBranchStore } from '@/store/branch.store';
 import { useIsCurrentBranch } from '@/store/isCurrentBranch.store';
-
+import Image from 'next/image';
 const CurrentOffice = () => {
   const [showSearchModal, setShowSearchModal] = useState(false);
   const [showSelectOfficeMap, setShowSelectOfficeMap] = useState(false);
@@ -54,7 +54,13 @@ const CurrentOffice = () => {
         <div className="text-white text-lg font-extralight">지금 이용중인 곳은</div>
         <div className="flex items-center justify-center gap-1">
           <div>
-            <img src="/home/location.svg" alt="" />
+            <Image
+              src="/home/location.svg"
+              alt="map"
+              width={11}
+              height={15}
+              className="w-full"
+            />
           </div>
           <div
             className="text-white text-lg underline font-medium cursor-pointer"
@@ -66,7 +72,13 @@ const CurrentOffice = () => {
         {!isCurrent ? (
           <div className="absolute z-50 top-6 right-20">
             <div className="ml-[22px] opacity-95 ">
-              <img src="/home/triangle.svg" alt="" />
+              <Image
+                src="/home/triangle.svg"
+                alt="map"
+                width={11}
+                height={15}
+                className="w-full"
+              />
             </div>
             <div className="border-t border-space-purple-dark-active p-2 opacity-95 bg-space-purple-dark-active rounded text-white text-sm font-normal">
               이 지점이 맞나요?
