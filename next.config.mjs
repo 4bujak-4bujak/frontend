@@ -2,16 +2,6 @@
 import withPWA from 'next-pwa';
 
 const nextConfig = {
-  async redirects() {
-    return [
-      {
-        source: '/',
-        destination: '/sign',
-        permanent: true // true로 설정하면 308 리다이렉션, false로 설정하면 307 리다이렉션
-      }
-    ];
-  },
-
   images: {
     domains: [
       'bzbz-file-bucket.s3.ap-northeast-2.amazonaws.com',
@@ -32,6 +22,23 @@ const nextConfig = {
         config.resolve.alias.push({ name: 'msw/node', alias: false });
       else config.resolve.alias['msw/node'] = false;
     }
+
+    if (!isServer) {
+      // splitChunks가 객체인지 확인하고, 필요하다면 초기화
+      if (
+        !config.optimization.splitChunks ||
+        typeof config.optimization.splitChunks !== 'object'
+      ) {
+        config.optimization.splitChunks = { cacheGroups: {} };
+      }
+
+      config.optimization.splitChunks.cacheGroups.commons = {
+        test: /[\\/]node_modules[\\/]/,
+        name: 'vendors',
+        chunks: 'all'
+      };
+    }
+
     return config;
   },
   pwa: withPWA({
