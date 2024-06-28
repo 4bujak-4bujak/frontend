@@ -45,7 +45,8 @@ const nextConfig = {
     dest: 'public',
     register: true,
     skipWaiting: true
-  })
+  }),
+  swcMinify: true
 };
 
 export default nextConfig;

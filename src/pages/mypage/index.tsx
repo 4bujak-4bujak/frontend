@@ -80,6 +80,7 @@ const MyPage = () => {
                       <img
                         className="absolute top-1/4 left-[13px]"
                         src="/mypage/Guide.svg"
+                        alt=""
                       />
                     </div>
                   </div>
@@ -91,7 +92,7 @@ const MyPage = () => {
                 </div>
               </div>
             </Link>
-            <img src="/mypage/Vector.svg" />
+            <img src="/mypage/Vector.svg" alt="" />
             <Link href={'/mypage/notice'}>
               <div className="flex flex-col justify-center items-start">
                 <div className="w-[70px] h-[78px] flex flex-col justify-start items-center">
@@ -100,6 +101,7 @@ const MyPage = () => {
                       <img
                         className="absolute top-1/4 left-1/4"
                         src="/mypage/Notice.svg"
+                        alt=""
                       />
                     </div>
                   </div>
@@ -112,7 +114,7 @@ const MyPage = () => {
               </div>
             </Link>
 
-            <img src="/mypage/Vector.svg" />
+            <img src="/mypage/Vector.svg" alt="" />
             <Link href={'/mypage/question'}>
               <div className="flex flex-col justify-center items-start">
                 <div className="w-[70px] h-[78px] flex flex-col justify-start items-center">
@@ -121,6 +123,7 @@ const MyPage = () => {
                       <img
                         className="absolute top-1/4 left-1/4"
                         src="/mypage/Inquiry.svg"
+                        alt=""
                       />
                     </div>
                   </div>
@@ -160,7 +163,7 @@ const MyPage = () => {
                 <div className="text-center text-black/opacity-20 text-base font-normal font-['Pretendard'] leading-normal">
                   알림 설정
                 </div>
-                <img className="mr-[16px]" src="/mypage/RightArrowIcon.svg" />
+                <img className="mr-[16px]" src="/mypage/RightArrowIcon.svg" alt="" />
               </div>
             </div>
             <div className="w-1.5 h-3 relative" />

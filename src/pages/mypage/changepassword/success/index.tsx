@@ -9,7 +9,8 @@ const ChangepasswordSuccess = () => {
           <div className="w-[95.84px] h-[95.84px] bg-violet-100 rounded-full mt-[240px] relative">
             <img
               className="absolute left-[15px] bottom-[30px]"
-              src="/mypage/passwordchange/Success.svg"></img>
+              src="/mypage/passwordchange/Success.svg"
+              alt=""></img>
           </div>
           <div className="text-center text-black text-[22px] font-semibold font-['Pretendard'] leading-[30.80px] mt-8">
             비밀번호 재설정이 <br />

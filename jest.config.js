@@ -1,5 +1,8 @@
 /* eslint-disable no-undef */
 module.exports = {
+  transform: {
+    '^.+\\.(t|j)sx?$': ['@swc/jest']
+  },
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1', // '@' 접두사를 'src' 디렉토리로 매핑
     '^@utils/(.*)$': '<rootDir>/src/utils/$1'

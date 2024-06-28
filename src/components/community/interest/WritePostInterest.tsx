@@ -21,9 +21,9 @@ const WritePostInterest = ({ postData, setPostData }: WritePostInterestType) => 
         </div>
         <div className="cursor-pointer" onClick={() => setIsOpen((prev) => !prev)}>
           {isOpen ? (
-            <img src="/community/toTop.svg" />
+            <img src="/community/toTop.svg" alt="" />
           ) : (
-            <img src="/community/toBottom.svg" />
+            <img src="/community/toBottom.svg" alt="" />
           )}
         </div>
       </div>

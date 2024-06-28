@@ -84,7 +84,7 @@ const Notification = () => {
               <div className="w-full max-w-md mx-auto p-4">
                 {allPosts?.length === undefined ? (
                   <div className=" w-full h-[400px] flex flex-col justify-center items-center">
-                    <img className="mb-[16px]" src="/mypage/inquiry/Warning.svg" />
+                    <img className="mb-[16px]" src="/mypage/inquiry/Warning.svg" alt="" />
                     <div className="text-neutral-400 text-base font-normal font-['Pretendard'] leading-snug">
                       예약 내역이 없습니다.
                     </div>
@@ -106,7 +106,7 @@ const Notification = () => {
               <div className="w-full max-w-md mx-auto p-4">
                 {allPosts?.length === undefined ? (
                   <div className=" w-full h-[400px] flex flex-col justify-center items-center">
-                    <img className="mb-[16px]" src="/mypage/inquiry/Warning.svg" />
+                    <img className="mb-[16px]" src="/mypage/inquiry/Warning.svg" alt="" />
                     <div className="text-neutral-400 text-base font-normal font-['Pretendard'] leading-snug">
                       알림 내역이 없습니다.
                     </div>

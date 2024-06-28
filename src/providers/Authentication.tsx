@@ -6,7 +6,7 @@ interface AuthenticationProviderProps {
   children: ReactNode;
 }
 
-export const AuthorizationProvider = ({ children }: AuthenticationProviderProps) => {
+const AuthorizationProvider = ({ children }: AuthenticationProviderProps) => {
   const router = useRouter();
   const token = getCookie('token');
   const pathname = usePathname();
@@ -21,5 +21,8 @@ export const AuthorizationProvider = ({ children }: AuthenticationProviderProps)
       router.push('/sign');
     }
   }, [router, token, pathname]);
+
   return <>{children}</>;
 };
+
+export default AuthorizationProvider;

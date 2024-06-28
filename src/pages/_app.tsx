@@ -1,13 +1,13 @@
 import ErrorBoundary from '@/components/shared/ErrorBoundary';
 import Layout from '@/components/shared/Layout';
 import LoadingSpinner from '@/components/shared/LoadingSpinner';
-import { AuthorizationProvider } from '@/providers/Authentication';
+// import { AuthorizationProvider } from '@/providers/Authentication';
 import MockProvider from '@/providers/MockProvider';
 import QueryProvider from '@/providers/QueryProvider';
 import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
-import Script from 'next/script';
+// import Script from 'next/script';
 import { useEffect, useState } from 'react';
 import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
@@ -32,25 +32,26 @@ export default function App({ Component, pageProps }: AppProps) {
       router.events.off('routeChangeError', handleComplete);
     };
   }, [router]);
+
   return (
     <>
       <Layout>
         <MockProvider>
           <QueryProvider>
-            <Script
+            {/* <Script
               strategy="beforeInteractive"
-              src={`https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${process.env.NEXT_PUBLIC_NAVER_MAP_CLIENT_ID}`}></Script>
-            <AuthorizationProvider>
-              <QueryClientProvider client={queryClient}>
-                <Hydrate state={pageProps.dehydratedState}>
-                  <ErrorBoundary>
-                    {loading && <LoadingSpinner />}
-                    <Component {...pageProps} />
-                  </ErrorBoundary>
-                </Hydrate>
-                <ReactQueryDevtools initialIsOpen={false} />
-              </QueryClientProvider>
-            </AuthorizationProvider>
+              src={`https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${process.env.NEXT_PUBLIC_NAVER_MAP_CLIENT_ID}`}></Script> */}
+            {/* <AuthorizationProvider> */}
+            <QueryClientProvider client={queryClient}>
+              <Hydrate state={pageProps.dehydratedState}>
+                <ErrorBoundary>
+                  {loading && <LoadingSpinner />}
+                  <Component {...pageProps} />
+                </ErrorBoundary>
+              </Hydrate>
+              <ReactQueryDevtools initialIsOpen={false} />
+            </QueryClientProvider>
+            {/* </AuthorizationProvider> */}
           </QueryProvider>
         </MockProvider>
       </Layout>

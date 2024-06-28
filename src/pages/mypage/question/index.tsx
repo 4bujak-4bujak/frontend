@@ -110,7 +110,7 @@ const InquiryHistory = () => {
       ) : (
         inquiriesData?.length === 0 && (
           <div className=" w-full h-[400px] flex flex-col justify-center items-center">
-            <img className="mb-[16px]" src="/mypage/inquiry/Warning.svg" />
+            <img className="mb-[16px]" src="/mypage/inquiry/Warning.svg" alt="" />
             <div className="text-neutral-400 text-base font-normal font-['Pretendard'] leading-snug">
               문의 내역이 없습니다.
             </div>

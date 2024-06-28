@@ -17,7 +17,7 @@ export const NotificationLayout = ({ notice }: { notice: NotificationType }) => 
       <div
         key={notice?.notificationId}
         className="flex flex-row  justify-start items-center mt-[16px] mb-[36px] relative">
-        <img src={notice?.image} className="mr-[14px] w-[28px] h-[28px]" />
+        <img src={notice?.image} className="mr-[14px] w-[28px] h-[28px]" alt="" />
 
         <div className="flex flex-col justify-start items-start">
           <div className="  text-sm font-bold text-black mb-[6px]">{notice?.title}</div>
