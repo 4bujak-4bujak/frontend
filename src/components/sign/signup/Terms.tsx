@@ -77,6 +77,7 @@ const Terms = ({
       <ul className="flex flex-col justify-center items-center gap-[12px] mt-[24px]">
         {termsAgreements.map((term) => (
           <TermsItem
+            key={term.id}
             checked={term.checked}
             title={term.title}
             subTitle={term.subTitle}
