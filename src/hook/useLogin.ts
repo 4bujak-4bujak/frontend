@@ -6,8 +6,8 @@ import { useMutation } from '@tanstack/react-query';
 import { useState } from 'react';
 import { throttle } from 'lodash';
 //todo 기범님 오류
-// import { getTokenHandler } from '@/components/pwa/Fcm';
-// import { fcmpost } from '@/api/fcm/fcm.post.api';
+import { getTokenHandler } from '@/components/pwa/Fcm';
+import { fcmpost } from '@/api/fcm/fcm.post.api';
 
 const useLogin = () => {
   const router = useRouter();
@@ -16,8 +16,8 @@ const useLogin = () => {
   const onSuccess = async (data: UserLoginType) => {
     const { accessToken } = data.data;
     const cookieOptions = { path: '/', maxAge: 3000000 * 15 };
-    // const token = await getTokenHandler();
-    // fcmpost({ fcmToken: token });
+    const token = await getTokenHandler();
+    fcmpost({ fcmToken: token });
     setCookie('token', accessToken, cookieOptions);
     router.push('/');
   };
