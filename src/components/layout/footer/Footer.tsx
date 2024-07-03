@@ -21,9 +21,21 @@ const Footer = () => {
           <div className="  h-[44.84px] flex-col justify-start items-center gap-2.5 inline-flex">
             <div className=" w-[22.06px] h-[21.82px] flex-col justify-center items-center  ml-[3px] mt-[3px]">
               {filteredPathName === '' ? (
-                <Image src="/CheckedHome.svg" alt="home" width={20} height={20} />
+                <Image
+                  src="/CheckedHome.svg"
+                  alt="home"
+                  width={20}
+                  height={20}
+                  loading="eager"
+                />
               ) : (
-                <Image src="/Home.svg" alt="home" width={20} height={20} />
+                <Image
+                  src="/Home.svg"
+                  alt="home"
+                  width={20}
+                  height={20}
+                  loading="eager"
+                />
               )}
             </div>
             <div className="text-center text-black text-xs font-normal font-['Pretendard']">
@@ -40,9 +52,16 @@ const Footer = () => {
                   alt="resoulvation"
                   width={20}
                   height={20}
+                  loading="eager"
                 />
               ) : (
-                <Image src="/Reservation.svg" alt="resoulvation" width={20} height={20} />
+                <Image
+                  src="/Reservation.svg"
+                  alt="resoulvation"
+                  width={20}
+                  height={20}
+                  loading="eager"
+                />
               )}
             </div>
             <div className="text-center text-black text-xs font-normal font-['Pretendard']">
@@ -54,9 +73,21 @@ const Footer = () => {
           <div className="h-[43.75px] flex-col justify-start items-center gap-2.5 inline-flex">
             <div className="w-[22.06px] h-[21.82px]  flex-col  justify-center items-center">
               {filteredPathName === 'map' ? (
-                <Image src="/CheckedNavigation.svg" alt="map" width={20} height={20} />
+                <Image
+                  src="/CheckedNavigation.svg"
+                  alt="map"
+                  width={20}
+                  height={20}
+                  loading="eager"
+                />
               ) : (
-                <Image src="/Navigation.svg" alt="map" width={20} height={20} />
+                <Image
+                  src="/Navigation.svg"
+                  alt="map"
+                  width={20}
+                  height={20}
+                  loading="eager"
+                />
               )}
             </div>
             <div className="text-center text-black text-xs font-normal font-['Pretendard']">
@@ -85,9 +116,21 @@ const Footer = () => {
           className="cursor-pointer h-[44.84px] flex-col justify-start items-center gap-2.5 inline-flex">
           <div className="w-[22.06px] h-[21.82px] flex-col justify-center items-center">
             {filteredPathName === 'community' ? (
-              <Image src="/CheckedCommunity.svg" alt="community" width={20} height={20} />
+              <Image
+                src="/CheckedCommunity.svg"
+                alt="community"
+                width={20}
+                height={20}
+                loading="eager"
+              />
             ) : (
-              <Image src="/Community.svg" alt="community" width={20} height={20} />
+              <Image
+                src="/Community.svg"
+                alt="community"
+                width={20}
+                height={20}
+                loading="eager"
+              />
             )}
           </div>
           <div className="text-center text-black text-xs font-normal font-['Pretendard']">
@@ -98,9 +141,21 @@ const Footer = () => {
           <div className="h-[44.84px] flex-col justify-start items-center gap-2.5 inline-flex">
             <div className="w-[22.06px] h-[21.82px] flex-col justify-center items-center">
               {filteredPathName === 'mypage' ? (
-                <Image src="/CheckedProfile.svg" alt="mypage" width={20} height={20} />
+                <Image
+                  src="/CheckedProfile.svg"
+                  alt="mypage"
+                  width={20}
+                  height={20}
+                  loading="eager"
+                />
               ) : (
-                <Image src="/Profile.svg" alt="mypage" width={20} height={20} />
+                <Image
+                  src="/Profile.svg"
+                  alt="mypage"
+                  width={20}
+                  height={20}
+                  loading="eager"
+                />
               )}
             </div>
             <div className="text-center text-black text-xs font-normal font-['Pretendard']">

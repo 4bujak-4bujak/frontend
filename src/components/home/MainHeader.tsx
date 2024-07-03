@@ -14,11 +14,18 @@ const MainHeader = () => {
             width={115}
             height={20}
             className="w-full"
+            loading="eager"
           />
         </div>
         <div className="flex justify-center items-center gap-6 ">
           <div className="cursor-pointer" onClick={() => router.push('mypage/question')}>
-            <Image src="/home/Inquiry_white.svg" alt="inquiry" width={20} height={20} />
+            <Image
+              src="/home/Inquiry_white.svg"
+              alt="inquiry"
+              width={20}
+              height={20}
+              loading="eager"
+            />
           </div>
           <div className="cursor-pointer" onClick={() => router.push('/notification')}>
             <Image
@@ -26,6 +33,7 @@ const MainHeader = () => {
               alt="notification"
               width={20}
               height={20}
+              loading="eager"
             />
           </div>
         </div>
