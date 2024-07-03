@@ -35,6 +35,7 @@ const SigninForm = () => {
       className="max-w-[361px] mx-auto">
       <div className="flex">
         <label
+          data-cy="sign-in-emailInput"
           htmlFor="email"
           className="text-neutral-600 text-base font-semibold font-pretendard">
           이메일
@@ -73,6 +74,7 @@ const SigninForm = () => {
 
       <div className="flex mt-[32px]">
         <label
+          data-cy="sign-in-passwordInput"
           htmlFor="password"
           className="text-neutral-600 text-base font-semibold font-pretendard">
           비밀번호
@@ -118,6 +120,7 @@ const SigninForm = () => {
       )}
 
       <button
+        id="signIn-Btn"
         className="mt-[66px] w-[361px] h-12 px-3.5 rounded-lg border border-black justify-center items-center inline-flex text-black text-[15px] font-semibold font-pretendard leading-snug"
         type="submit">
         로그인
