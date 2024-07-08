@@ -15,10 +15,6 @@ firebase.initializeApp({
 // 푸시 내용을 처리해서 알림으로 띄운다.
 self.addEventListener('push', function (event) {
   if (event.data) {
-    // console.log(event.data.json().data);
-    // console.log(event.data.json().notification);
-
-    // 알림 메세지일 경우엔 event.data.json().notification;
     const url = event.data.json().data;
     const data = event.data.json().notification;
     const options = {
@@ -44,7 +40,6 @@ self.addEventListener('notificationclick', async function (event) {
   event.preventDefault();
   event.notification.close();
   const urlToOpen = event.notification.data.targetUrl;
-  // const targetId = event.notification.data.targetId;
   const Type = event.notification.data.targetType;
 
   //indexedDB틑 롱해 데이터 전달
@@ -83,10 +78,7 @@ self.addEventListener('notificationclick', async function (event) {
         return matchingClient.focus();
       } else {
         if (Type === 'RESERVATION') {
-          return clients.openWindow(
-            // `reservation/myreservationlist?targetId=${event.notification.data.targetId}`
-            `reservation/myreservationlist`
-          );
+          return clients.openWindow(`reservation/myreservationlist`);
         } else {
           return clients.openWindow(`community/${event.notification.data.targetId}`);
         }
