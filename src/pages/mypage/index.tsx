@@ -3,7 +3,7 @@ import { jobPosition, getTitleFromDescription } from '@/constant/jobPosition';
 import { useMember } from '@/store/user';
 import Link from 'next/link';
 import LogoutModal from '@/components/modal/logoutModal';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import useLoggedOut from '@/hook/useLoggedOut';
 import SuccessModal from '@/components/modal/successModal';
 import useUpdateMember from '@/hook/useUpdateMember';
@@ -16,14 +16,14 @@ const MyPage = () => {
   const [isModalVisible, setModalVisible] = useState(false);
   const [successModal, setSuccessModal] = useState(false);
   const logout = useLoggedOut();
-  const handleLogout = () => {
+  const handleLogout = useCallback(() => {
     setModalVisible(false);
     setSuccessModal(true);
 
     setTimeout(() => {
       logout();
     }, 2000);
-  };
+  }, [logout]);
 
   useUpdateMember();
   const handleCancel = () => {

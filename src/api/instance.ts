@@ -1,9 +1,4 @@
-import axios, {
-  Axios,
-  InternalAxiosRequestConfig,
-  AxiosError,
-  AxiosResponse
-} from 'axios';
+import axios, { InternalAxiosRequestConfig, AxiosError, AxiosResponse } from 'axios';
 
 import { getCookie, removeCookie, setCookie } from '@utils/cookies';
 import logOnDev from '@utils/logOnDev';
@@ -12,7 +7,7 @@ import { updateRefresh } from './refresh/tokenRefresh.api';
 
 // import { UseRouter } from '@/hook/UseRouter';
 
-export const instance: Axios = axios.create({
+export const instance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BASE_URL,
   withCredentials: true,
   headers: {

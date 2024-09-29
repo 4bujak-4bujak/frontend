@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import Link from 'next/link';
 import { useMember } from '@/store/user';
 import { getTitleFromDescription, jobPosition } from '@/constant/jobPosition';
@@ -6,33 +6,18 @@ import { memberimage } from '@/api/auth/auth.patch.api';
 import useUpdateMember from '@/hook/useUpdateMember';
 import { BackArrow } from '@/components/sign/backarrow/BackArrow';
 import SEO from '@/components/shared/SEO';
-// import { useQuery } from 'react-query'; // Uncomment when useQuery is available
 
 export default function Profile() {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
-
-  //api나오면 zustand 로직으로 수정
   /* eslint-disable */
   const [fileUrl, setFileUrl] = useState<string | null>(null);
-
   const member = useMember();
-  const job = getTitleFromDescription(jobPosition, member.memberJob);
+  const job = useMemo(
+    () => getTitleFromDescription(jobPosition, member.memberJob),
+    [member.memberJob]
+  );
 
-  //백엔드에게 파일 보내는 로직
-
-  // const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   if (event.target.files && event.target.files.length > 0) {
-  //     setSelectedFile(event.target.files[0]);
-  //   }
-  //   const formData = new FormData();
-  //   if (selectedFile) {
-  //     formData.append('file', selectedFile);
-  //   }
-  //
-
-  // };
-
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
       const file = event.target.files[0];
       const formData = new FormData();
@@ -40,18 +25,18 @@ export default function Profile() {
 
       memberimage(formData);
 
-      setSelectedFile(event.target.files[0]);
+      setSelectedFile(file);
       const reader = new FileReader();
       reader.onload = function (e) {
         if (e.target && e.target.result) {
-          setFileUrl(e.target.result.toString()); // 파일의 데이터 URL을 저장합니다.
+          setFileUrl(e.target.result.toString());
         }
       };
-      reader.readAsDataURL(event.target.files[0]); // 파일을 데이터 URL로 읽습니다.
+      reader.readAsDataURL(file);
     }
     alert('프로필 사진이 변경되었습니다.');
     window.location.reload();
-  };
+  }, []);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();

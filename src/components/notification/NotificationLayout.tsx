@@ -2,18 +2,20 @@ import { NotificationType } from '@/api/types/notification';
 import { useReservationStore } from '@/store/reservationModal.store';
 import CalculateTime from '@/utils/calculateTime';
 import Link from 'next/link';
+import { useCallback, useMemo } from 'react';
 
 export const NotificationLayout = ({ notice }: { notice: NotificationType }) => {
   const { setOpen, setReservationId, setIsMeeting } = useReservationStore();
 
+  const handleClick = useCallback(() => {
+    setOpen(true);
+    setIsMeeting(true);
+    setReservationId(notice?.targetId as any);
+  }, [notice?.targetId, setOpen, setIsMeeting, setReservationId]);
+
+  const calculatedTime = useMemo(() => CalculateTime(notice?.date), [notice?.date]);
   return (
-    <Link
-      href={`/reservation/myreservationlist`}
-      onClick={() => {
-        setOpen(true);
-        setIsMeeting(true);
-        setReservationId(notice?.targetId as any);
-      }}>
+    <Link href={`/reservation/myreservationlist`} onClick={handleClick}>
       <div
         key={notice?.notificationId}
         className="flex flex-row  justify-start items-center mt-[16px] mb-[36px] relative">
@@ -29,7 +31,7 @@ export const NotificationLayout = ({ notice }: { notice: NotificationType }) => 
           className="min-w-[60px] w-auto  pl-[20px] pb-[35px] text-xs  font-light text-neutral-400 absolute
          top-0 right-2
       ">
-          {CalculateTime(notice?.date)}
+          {calculatedTime}
         </div>
       </div>
     </Link>
