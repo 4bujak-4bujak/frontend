@@ -21,7 +21,7 @@ const CommunityDetailPage = () => {
 export default CommunityDetailPage;
 
 // eslint-disable-next-line react-refresh/only-export-components
-export async function getServerSideProps(context: GetServerSidePropsContext) {
+export async function getStaticSideProps(context: GetServerSidePropsContext) {
   const { query, req } = context;
   const { cookie } = req.headers;
   const postId = query.id as string;
